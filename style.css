@@ -1,0 +1,717 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    /* background-color:#17181a; */
+    background-color: black;
+    /* font-family: 'Abril Fatface', serif; */
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+main {
+    position: absolute;
+}
+
+.nav-header {
+    /* border: 2px solid red; */
+    min-height: 8vh;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    margin: auto;
+    padding: 2rem 0rem;
+    width: 80%;
+    z-index: 2;
+    position: relative;
+
+}
+
+#logo {
+    color: white;
+    font-family: 'Abril Fatface', serif;
+}
+
+.burger {
+    cursor: pointer;
+}
+
+.line1,
+.line2 {
+    width: 3rem;
+    height: 0.2rem;
+    margin: 0.4rem;
+    background-color: white;
+    pointer-events: none;
+}
+
+.slide {
+    /* border: 2px solid green; */
+    min-height: 100vh;
+    margin: 0px auto 0px auto;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    background-color: black;
+}
+
+/* main image container i.e. hero-img */
+.hero-img {
+    /* border: 2px solid rgb(219, 97, 36); */
+    position: relative;
+    flex: 1;
+    flex-basis: 25rem;
+    overflow: hidden;
+
+}
+
+/* image inside the (hero-img) container */
+.hero-img img {
+    /* border: 2px solid rgb(63, 36, 219); */
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* main description container i.e. hero-desc */
+.hero-desc {
+    /* border: 2px solid rgb(239, 70, 177); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    flex-basis: 25rem;
+    padding-left: 5rem;
+    position: relative;
+}
+
+/* heading inside the hero-desc container */
+.hero-desc h2 {
+    font-family: 'Abril Fatface', serif;
+    font-size: 4rem;
+}
+
+.mountain-span {
+    color: rgb(86, 124, 228);
+}
+
+.hike-span {
+    color: rgb(167, 110, 231);
+}
+
+.fashion-span {
+    color: rgb(255, 139, 93);
+}
+
+/* paragraph inside the hero-desc container */
+.hero-desc p {
+    padding: 3rem 0rem;
+    font-size: 1.4rem;
+    color: rgb(223, 223, 223);
+}
+
+/* explore button inside the hero-desc container */
+.explore {
+    padding: 1rem 2rem;
+    border: none;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    align-self: flex-start;
+    background: none;
+}
+
+/* nav-bar open after clicking on burger icon */
+.nav-bar {
+    /* border: 2px solid blue; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* clip-path:circle(radius at position of center) */
+    clip-path: circle(50px at 100% -10%);
+    /* for other browsers */
+    /* -webkit-clip-path: circle(50px at  100%-10%); */
+
+
+}
+
+/* nav link to social media */
+.nav-link {
+    /* border: 2px solid rgb(0, 0, 18); */
+    font-size: 4rem;
+    flex-basis: 30rem;
+}
+
+.nav-link h3 {
+    padding: 3rem 0rem;
+}
+
+/* contact details */
+.contact {
+    /* border: 2px solid rgb(0, 0, 18); */
+    flex-basis: 30rem;
+}
+
+.contact h2 {
+    font-size: 5rem;
+    padding: 2rem 0rem;
+}
+
+.contact p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+/* style of cursor */
+.cursor {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 2px solid white;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    /* transition  */
+    transition: all 0.4s ease-in-out;
+    transition-property: background, transform;
+    transform-origin: 75% 75%;
+}
+
+.cursor.nav-active {
+    background: rgb(223, 65, 7);
+    transform: scale(3);
+}
+
+.cursor.explore-active {
+    background: white;
+    transform: scale(3);
+}
+
+.cursor-text {
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.5rem;
+}
+
+/* reveal img and reveal txt */
+.reveal-img,
+.reveal-text {
+    /* border: 2px solid white; */
+    position: absolute;
+    left: 0;
+    top: -10px;
+    height: 150%;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+}
+
+/* the setpin method overlapp the explore button and unable the cursor on it .to avoid this we use::after
+scrollmagic-pin-spacer */
+.scrollmagic-pin-spacer {
+    position: static !important;
+}
+
+/* title swipe */
+.title {
+    position: relative;
+    overflow: hidden;
+}
+
+.title-swipe {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    /* to mix this element with text we use mix blend mode*/
+    mix-blend-mode: darken;
+    transform: translateY(100%);
+}
+
+.t-swipe1 {
+    background: rgb(86, 124, 228);
+}
+
+.t-swipe2 {
+    background: rgb(167, 110, 231);
+}
+
+.t-swipe3 {
+    background: rgb(255, 139, 93);
+}
+
+.hideScroll {
+    overflow: hidden;
+}
+
+/* css of fashion */
+.fashion1,
+.fashion2,
+.fashion3 {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+    color: white;
+    margin-top: 5rem;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.fashion-img {
+    /* border: 2px solid red; */
+    height: 75vh;
+    flex-basis: 30rem;
+}
+
+.fashion-txt {
+    flex: 1;
+    position: relative;
+    flex-basis: 25rem;
+}
+
+.fashion-img img {
+    /* border: 2px solid rgb(0, 255, 0); */
+    /* border-radius: 0rem 6rem; */
+    height: 100%;
+    width: 100%;
+    /* object-fit: cover; */
+}
+
+.fashion-txt h1 {
+    font-size: 6rem;
+    padding: 5rem 0rem;
+}
+
+.fashion1 h1 {
+    color: rgb(255, 139, 93);
+}
+
+.fashion2 h1 {
+    color: rgb(167, 110, 231);
+}
+
+.fashion3 h1 {
+    color: rgb(86, 124, 228);
+}
+
+.fashion-txt p {
+    font-size: 2rem;
+    padding: 2rem 2rem 0rem 0rem;
+    margin-bottom: 10rem;
+
+}
+
+.fashion-nr {
+    font-size: 10rem;
+    position: absolute;
+    /* left: 45%;
+    bottom: 8%; */
+    top: 0%;
+    right: 0%;
+    color: rgb(228, 39, 187);
+    opacity: 0.4;
+}
+
+
+/* transition swipes */
+.swipe {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    transform: translateX(-100%);
+}
+
+.swipe1 {
+    background: rgb(228, 228, 35);
+    z-index: 5;
+}
+
+.swipe2 {
+    background: rgb(228, 35, 115);
+    z-index: 4;
+
+}
+
+.swipe3 {
+    background: rgb(228, 77, 35);
+    z-index: 3;
+}
+
+/* for small laptops */
+
+@media screen and (min-width:769px) and (max-width:1256px) {
+    body {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+
+    .slide {
+        /* border: 2px solid red; */
+        height: 100vh;
+    }
+
+    .hero-desc {
+        /* border: 2px solid rgb(239, 234, 234); */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-desc h2 {
+        /* border: 2px solid red; */
+        padding: 1rem;
+        font-size: 2rem;
+    }
+
+    .hero-desc p {
+        font-size: 1.2rem;
+        padding: 1rem;
+        /* border: 2px solid red; */
+    }
+
+    .explore {
+        align-self: center;
+    }
+
+    /* fashion */
+    .detail-slide {
+        border: 2px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+
+    .fashion-txt {
+        /* border: 2px solid white; */
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        /* gap: 3rem; */
+
+
+    }
+
+    .fashion-txt h1 {
+        padding: 1rem;
+        /* border: 2px solid white; */
+        font-size: 2rem;
+    }
+
+    .fashion-txt p {
+        /* border: 2px solid white; */
+        padding: 1rem;
+        font-size: 1.3rem;
+    }
+
+    /* burger toggle */
+    .nav-bar {
+        /* border: 2px solid black; */
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+    }
+
+    .nav-link {
+        /* border: 2px solid black; */
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        flex-basis: auto;
+        font-size: 2rem;
+        height: 70vh;
+
+    }
+
+    .contact {
+        /* border:2px solid black; */
+        width: 30%;
+        height: 70vh;
+        margin-right: 10rem;
+        padding: 0.5rem;
+    }
+
+    .contact h2 {
+        font-size: 2rem;
+    }
+}
+
+/* for tablet */
+@media screen and (min-width:425px) and (max-width:768px) {
+    body {
+        /* background-color: yellow; */
+        max-width: 768px;
+        margin: 0 auto;
+    }
+
+    .slide {
+        /* border: 2px solid white; */
+        flex-direction: column;
+        height: 100vh;
+        text-align: center;
+    }
+
+    .hero-img {
+        width: 90%;
+
+    }
+
+    .hero-desc h2 {
+        font-size: 2rem;
+        margin-right: 3.5rem;
+    }
+
+    .hero-desc p {
+        /* border: 2px solid white; */
+        width: 90%;
+        font-size: 1.2rem;
+        text-align: justify;
+        padding: 0rem;
+        margin-right: 3.5rem;
+    }
+
+    .explore {
+        width: 90%;
+        margin-top: 0.5rem;
+        text-align: center;
+        font-weight: bolder;
+        margin-right: 3rem;
+
+    }
+
+    .reveal-text {
+        /* border: 2px solid white; */
+        height: 80%;
+    }
+
+    /* burger toggle */
+
+    .nav-bar {
+        /* border: 5px solid black; */
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: 4rem;
+        margin-right: 15rem;
+    }
+
+    .nav-link {
+        /* border: 2px solid black; */
+        font-size: 2rem;
+        align-self: flex-start;
+        margin: 7rem 0rem 0rem 18rem;
+        flex-basis: 7rem;
+
+    }
+
+    .nav-link h3 {
+        /* border: 2px solid black; */
+        padding: 0px;
+        height: 4rem;
+    }
+
+    .contact {
+        /* border:2px solid black; */
+        align-self: flex-start;
+        margin-left: 15rem;
+        flex-basis: 10rem;
+        width: 20rem;
+    }
+
+    .contact h2 {
+        text-align: center;
+        font-size: 2rem;
+        padding: 0rem;
+    }
+
+    .detail-slide {
+        /* border: 2px solid white; */
+        flex-direction: column;
+    }
+
+    .fashion-txt {
+        /* border: 2px solid white; */
+        flex-basis: 10rem;
+    }
+
+    .fashion-txt h1 {
+        /* border: 2px solid white; */
+        font-size: 2rem;
+        padding: 2rem;
+    }
+
+    .fashion-txt p {
+        /* border: 2px solid white; */
+        padding: 1rem;
+        margin-bottom: 0rem;
+        font-size: 1rem;
+    }
+
+    .fashion-img {
+        /* border: 2px solid white; */
+        width: 80%;
+    }
+
+    .fashion-nr {
+        font-size: 5rem;
+    }
+}
+
+/* mobile view */
+@media screen and (max-width:424px) {
+    body {
+        /* background-color: yellow; */
+        max-width: 768px;
+        margin: 0 auto;
+    }
+
+    .slide {
+        /* border: 2px solid white; */
+        flex-direction: column;
+        height: 120vh;
+        text-align: center;
+    }
+
+    .hero-img {
+        width: 90%;
+
+    }
+
+    .hero-desc h2 {
+        font-size: 1rem;
+        padding: 0.5rem;
+        margin-right: 3.5rem;
+    }
+
+    .hero-desc p {
+        /* border: 2px solid white; */
+        width: 90%;
+        font-size: 1.2rem;
+        text-align: justify;
+        padding: 0rem;
+        margin-right: 3.5rem;
+    }
+
+    .explore {
+        width: 80%;
+        margin-top: 0.5rem;
+        text-align: center;
+        font-weight: bolder;
+        margin-right: 3.5rem;
+
+    }
+
+    .reveal-text {
+        /* border: 2px solid white; */
+        height: 130%;
+    }
+
+    /* burger toggle */
+
+    .nav-bar {
+        /* border: 5px solid black; */
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: 4rem;
+        margin-right: 15rem;
+    }
+
+    .nav-link {
+        /* border: 2px solid black; */
+        font-size: 1.5rem;
+        align-self: flex-start;
+        margin: 7rem 0rem 0rem 10rem;
+        flex-basis: 5rem;
+
+    }
+
+    .nav-link h3 {
+        /* border: 2px solid black; */
+        padding: 0px;
+        height: 4rem;
+    }
+
+    .contact {
+        /* border:2px solid black; */
+        text-align: center;
+        align-self: flex-start;
+        margin-left: 5rem;
+        flex-basis: 8rem;
+        width: 20rem;
+    }
+
+    .contact h2 {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 0rem;
+    }
+
+    /* next page */
+    .detail-slide {
+        /* border: 2px solid white; */
+        flex-direction: column;
+    }
+
+    .fashion-txt {
+        /* border: 2px solid white; */
+        flex-basis: 8rem;
+    }
+
+    .fashion-txt h1 {
+        /* border: 2px solid white; */
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+
+    .fashion-txt p {
+        /* border: 2px solid white; */
+        padding: 0.8rem;
+        margin-bottom: 0rem;
+        font-size: 1rem;
+    }
+
+    .fashion-img {
+        /* border: 2px solid white; */
+        width: 80%;
+        flex-basis: 10rem;
+    }
+
+    .fashion-img img {
+        height: 80%;
+    }
+
+    .fashion-nr {
+        font-size: 3rem;
+    }
+}
